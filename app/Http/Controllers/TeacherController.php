@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Employee;
+use App\Models\Teacher;
 
-class EmployeeController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,11 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
-        return view('employee.index',compact('employees'));
+        //
+        $teachers = Teacher::all();
+
+               //view('view_file_name',compact('Data_pass'));
+        return view('teacher.index',compact('teachers'));
     }
 
     /**
@@ -25,7 +28,9 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employee.create');
+        //
+
+        return view('teacher.create');
     }
 
     /**
@@ -38,16 +43,15 @@ class EmployeeController extends Controller
     {
         //
 
-        $employee = new Employee();
+        $teacher = new Teacher();
 
-        $employee->name = $request->name;
-        $employee->email = $request->email;
-        $employee->phone = $request->phone;
+        $teacher->name = $request->name;
+        $teacher->phone = $request->phone;
+        $teacher->email = $request->email;
 
+        $teacher->save();
 
-        $employee->save();
-
-        return redirect()->route('employees');
+        return redirect()->route('teachers');
     }
 
     /**
@@ -69,13 +73,9 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $employee = Employee::find($id);
+        $teacher = Teacher::find($id);
 
-
-
-            //view('view_file_name',compact('Data_pass'));
-
-        return view('employee.edit-employee',compact('employee'));
+        return view('teacher.edit',compact('teacher'));
     }
 
     /**
@@ -87,16 +87,16 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $employee = Employee::find($id);
+        
+        $teacher = Teacher::find($id);
 
-        $employee->name = $request->name;
-        $employee->email = $request->email;
-        $employee->phone = $request->phone;
+        $teacher->name = $request->name;
+        $teacher->phone = $request->phone;
+        $teacher->email = $request->email;
 
+        $teacher->save();
 
-        $employee->save();
-
-        return redirect()->route('employees');
+        return redirect()->route('teachers');
     }
 
     /**
@@ -107,10 +107,11 @@ class EmployeeController extends Controller
      */
     public function delete($id)
     {
-        $employee = Employee::find($id);
+        //
+        $teacher = Teacher::find($id);
 
-        $employee->delete();
+        $teacher->delete();
 
-        return redirect()->back();
+        return redirect()->route('teachers');
     }
 }

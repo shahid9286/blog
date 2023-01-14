@@ -21,7 +21,7 @@ tr:nth-child(even) {
 </head>
 <body>
 
-<h2>HTML Table</h2>
+<h2>Teacher Table</h2> <a href="{{route('create.teacher')}}">Add New Teacher</a> <br><br>
 
 <table>
   <tr>
@@ -30,13 +30,13 @@ tr:nth-child(even) {
     <th>Phone</th>
     <th colspan="2">Actions</th>
   </tr>
-        @foreach ($employees as $employee)
+        @foreach ($teachers as $item)
             <tr>
-                <td>{{$employee->name }}</td>
-                <td>{{$employee->email }}</td>
-                <td>{{$employee->phone }}</td>
-                <td><a href="{{route('delete.employee',$employee->id)}}">Delete</a></td>
-                <td><a href="{{route('edit.employee',$employee->id)}}">Edit</a></td>
+                <td>{{$item->name }}</td>
+                <td>{{$item->email }}</td>
+                <td>{{$item->phone }}</td>
+                <td><a href="{{route('delete.teacher',$item->id)}}">Delete</a></td>
+                <td><a href="{{route('edit.teacher',$item->id)}}">Edit</a></td>
             </tr>
          
         @endforeach
