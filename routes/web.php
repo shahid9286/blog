@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,11 @@ Route::post('store-teacher',[TeacherController::class,'store'])->name('store.tea
 Route::get('delete-teacher/{id}',[TeacherController::class,'delete'])->name('delete.teacher');
 Route::get('edit-teacher/{id}',[TeacherController::class,'edit'])->name('edit.teacher');
 Route::post('update-teacher/{id}',[TeacherController::class,'update'])->name('update.teacher');
+
+
+Route::get('doctors',[DoctorController::class,'index'])->name('doctors');
+Route::get('add-doctor',[DoctorController::class,'create'])->name('create.doctor');
+Route::post('store-doctor',[DoctorController::class,'store'])->name('store.doctor');
+Route::get('delete-doctor/{id}',[DoctorController::class,'delete'])->name('delete.doctor');
+Route::get('edit-doctor/{id}',[DoctorController::class,'edit'])->name('edit.doctor');
+Route::post('update-doctor/{id}',[DoctorController::class,'update'])->name('update.doctor');
